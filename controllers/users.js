@@ -62,8 +62,9 @@ const usersDelete = async (req = request, res = response) => {
 
   // Cambio de estado
   const user = await User.findByIdAndUpdate(id, { state: false });
+  const authUser = req.user;
 
-  res.json(user);
+  res.json({ user, authUser });
 }
 
 module.exports = {
